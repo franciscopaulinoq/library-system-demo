@@ -1,13 +1,13 @@
 CREATE TABLE categories
 (
-    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id           BIGSERIAL PRIMARY KEY,
     name        VARCHAR(255) NOT NULL,
     description TEXT
 );
 
 CREATE TABLE authors
 (
-    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id           BIGSERIAL PRIMARY KEY,
     name        VARCHAR(255) NOT NULL,
     birth_date  DATE,
     nationality VARCHAR(100),
@@ -16,7 +16,7 @@ CREATE TABLE authors
 
 CREATE TABLE users
 (
-    id                BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id                 BIGSERIAL PRIMARY KEY,
     name              VARCHAR(255) NOT NULL,
     cpf               VARCHAR(11)  NOT NULL UNIQUE,
     email             VARCHAR(255) NOT NULL UNIQUE,
@@ -28,7 +28,7 @@ CREATE TABLE users
 
 CREATE TABLE books
 (
-    id                 BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id                  BIGSERIAL PRIMARY KEY,
     isbn               VARCHAR(20)  NOT NULL UNIQUE,
     title              VARCHAR(255) NOT NULL,
     publisher          VARCHAR(100),
@@ -36,14 +36,14 @@ CREATE TABLE books
     number_pages       INT,
     total_quantity     INT          NOT NULL,
     available_quantity INT          NOT NULL,
-    category_id        BIGINT,
+    category_id         BIGSERIAL,
     FOREIGN KEY (category_id) REFERENCES categories (id)
 );
 
 CREATE TABLE loans
 (
-    id                    BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id               BIGINT      NOT NULL,
+    id                     BIGSERIAL PRIMARY KEY,
+    user_id                BIGSERIAL      NOT NULL,
     loan_date             DATE        NOT NULL,
     expected_return_date  DATE        NOT NULL,
     effective_return_date DATE,
@@ -54,17 +54,17 @@ CREATE TABLE loans
 
 CREATE TABLE loan_items
 (
-    id      BIGINT AUTO_INCREMENT PRIMARY KEY,
-    loan_id BIGINT NOT NULL,
-    book_id BIGINT NOT NULL,
+    id       BIGSERIAL PRIMARY KEY,
+    loan_id  BIGSERIAL NOT NULL,
+    book_id  BIGSERIAL NOT NULL,
     FOREIGN KEY (loan_id) REFERENCES loans (id),
     FOREIGN KEY (book_id) REFERENCES books (id)
 );
 
 CREATE TABLE books_authors
 (
-    book_id   BIGINT NOT NULL,
-    author_id BIGINT NOT NULL,
+    book_id    BIGSERIAL NOT NULL,
+    author_id  BIGSERIAL NOT NULL,
     PRIMARY KEY (book_id, author_id),
     FOREIGN KEY (book_id) REFERENCES books (id),
     FOREIGN KEY (author_id) REFERENCES authors (id)
