@@ -1,4 +1,4 @@
-package br.edu.ifrn.francisco.library.demo.adapters.input.business;
+package br.edu.ifrn.francisco.library.demo.domain.business;
 
 import br.edu.ifrn.francisco.library.demo.domain.model.Book;
 import br.edu.ifrn.francisco.library.demo.domain.model.CategoryBookCount;
