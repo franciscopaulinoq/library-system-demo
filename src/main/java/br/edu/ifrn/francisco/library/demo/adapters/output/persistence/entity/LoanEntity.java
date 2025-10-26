@@ -2,6 +2,7 @@ package br.edu.ifrn.francisco.library.demo.adapters.output.persistence.entity;
 
 import br.edu.ifrn.francisco.library.demo.domain.model.LoanStatus;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -34,12 +35,20 @@ public class LoanEntity extends AbstractEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
+    @Column(name = "loan_date")
     private LocalDate loanDate;
+
+    @Column(name = "expected_return_date")
     private LocalDate expectedReturnDate;
+
+    @Column(name = "effective_return_date")
     private LocalDate effectiveReturnDate;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "loan_status")
     private LoanStatus loanStatus;
+
+    @Column(name = "value_fine")
     private Double valueFine;
 
     @OneToMany(mappedBy = "loan", cascade = CascadeType.ALL)

@@ -1,5 +1,6 @@
 package br.edu.ifrn.francisco.library.demo.adapters.output.persistence.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
@@ -24,6 +25,8 @@ import java.util.Set;
 @SuperBuilder
 public class AuthorEntity extends AbstractEntity {
     private String name;
+
+    @Column(name = "birth_date")
     private LocalDate birthDate;
     private String nationality;
     private String biography;

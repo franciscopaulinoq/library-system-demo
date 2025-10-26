@@ -36,9 +36,17 @@ public class BookEntity extends AbstractEntity{
     private String isbn;
     private String title;
     private String publisher;
+
+    @Column(name = "published_year")
     private Integer publishedYear;
+
+    @Column(name = "number_pages")
     private Integer numberOfPages;
+
+    @Column(name = "total_quantity")
     private Integer totalQuantity;
+
+    @Column(name = "available_quantity")
     private Integer availableQuantity;
 
     @ManyToOne(fetch = FetchType.LAZY)

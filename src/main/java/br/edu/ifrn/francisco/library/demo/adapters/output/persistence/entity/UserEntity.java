@@ -1,5 +1,6 @@
 package br.edu.ifrn.francisco.library.demo.adapters.output.persistence.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -27,6 +28,8 @@ public class UserEntity extends AbstractEntity {
     private String cpf;
     private String email;
     private String phone;
+
+    @Column(name = "registration_date")
     private LocalDate registrationDate;
     private String address;
     private Boolean active;
