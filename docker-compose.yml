@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres-db-library
+    restart: always
+    environment:
+      POSTGRES_DB: library_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_library_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_library_data:
